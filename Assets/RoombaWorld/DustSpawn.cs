@@ -18,6 +18,7 @@ public class DustSpawn : MonoBehaviour
         {
             GameObject instance = Instantiate(dustPrefab/*, LocationHelper.RandomWalkableLocation(), Quaternion.identity*/);
             instance.transform.position = LocationHelper.RandomWalkableLocation();
+            instance.GetComponent<SpriteRenderer>().color = Random.ColorHSV();
             elapsedTime = 0f;
             Debug.Log("print"); 
         }
