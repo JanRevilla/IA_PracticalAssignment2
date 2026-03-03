@@ -2,6 +2,7 @@ using FSMs;
 using UnityEngine;
 using Steerings;
 
+
 [CreateAssetMenu(fileName = "FSM_MiceBehaviour", menuName = "Finite State Machines/FSM_MiceBehaviour", order = 1)]
 public class FSM_MiceBehaviour : FiniteStateMachine
 {
@@ -13,6 +14,9 @@ public class FSM_MiceBehaviour : FiniteStateMachine
     private GoToTarget goToTarget;
 
 
+  
+
+
 
     public override void OnEnter()
     {
@@ -22,6 +26,7 @@ public class FSM_MiceBehaviour : FiniteStateMachine
 
         blackboard = GetComponent<MOUSE_Blackboard>();
         goToTarget = GetComponent<GoToTarget>();
+       
         base.OnEnter(); // do not remove
     }
 
@@ -55,14 +60,24 @@ public class FSM_MiceBehaviour : FiniteStateMachine
 
 
         State DoesAPoo = new State ("DoesAPoo",
-            () => { 
-                blackboard.pooPrefab.SetActive(true);
-                
-            
+            () => {
+                Debug.Log("Poo");
+                //instance = Instantiate(blackboard.pooPrefab, gameObject.transform); ;
+                GameObject instance = Instantiate(blackboard.pooPrefab);
+                instance.transform.position = gameObject.transform.position;
             }, // write on enter logic inside {}
             () => { }, // write in state logic inside {}
             () => { }  // write on exit logic inisde {}  
         );
+
+        State GoToRandomExitLocation = new State("GoToRandomExitLocation",
+            () => { goToTarget.target = LocationHelper.RandomEntryExitPoint();
+            }, // write on enter logic inside {}
+            () => { }, // write in state logic inside {}
+            () => { }  // write on exit logic inisde {}  
+        );
+
+
 
 
         /* STAGE 2: create the transitions with their logic(s)
@@ -76,12 +91,22 @@ public class FSM_MiceBehaviour : FiniteStateMachine
         */
 
         Transition RandomWalkableLocationNear = new Transition("RandomWalkableLocationNear",
-            () => { return SensingUtils.DistanceToTarget(gameObject, goToTarget.target) <= 0.2f; }, // write the condition checkeing code in {}
+            () => { return SensingUtils.DistanceToTarget(gameObject, goToTarget.target) <= 5f; }, // write the condition checkeing code in {}
             () => { }  // write the on trigger code in {} if any. Remove line if no on trigger action needed
         );
 
+        Transition PooDone = new Transition("PooDone",
+            () => { return SensingUtils.FindInstanceWithinRadius(gameObject, "POO", 5f); },
+            () => { }
+        );
 
-        
+        Transition ExitLocationNear = new Transition("ExitLocationNear",
+             () => { return SensingUtils.DistanceToTarget(gameObject, goToTarget.target) <= 5f; },
+             () => { Destroy(gameObject); }
+        );
+
+
+
         /* STAGE 3: add states and transitions to the FSM 
          * ----------------------------------------------
             
@@ -90,10 +115,11 @@ public class FSM_MiceBehaviour : FiniteStateMachine
         AddTransition(sourceState, transition, destinationState);
 
          */
-        AddStates(GoToRandomWalkableLocation,DoesAPoo);
+        AddStates(GoToRandomWalkableLocation,DoesAPoo,GoToRandomExitLocation);
 
-        AddTransition(GoToRandomWalkableLocation,RandomWalkableLocationNear,DoesAPoo);  
-
+        AddTransition(GoToRandomWalkableLocation,RandomWalkableLocationNear,DoesAPoo);
+        AddTransition(DoesAPoo, PooDone, GoToRandomExitLocation);
+        AddTransition(GoToRandomExitLocation, ExitLocationNear, GoToRandomExitLocation);
         /* STAGE 4: set the initial state
          
         initialState = ... 

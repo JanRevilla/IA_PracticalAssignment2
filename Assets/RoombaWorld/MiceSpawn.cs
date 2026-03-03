@@ -17,7 +17,6 @@ public class MiceSpawn : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(elapsedTime);
         if (elapsedTime >= spawnDelay)
         {
             GameObject instance = Instantiate(micePrefab);
