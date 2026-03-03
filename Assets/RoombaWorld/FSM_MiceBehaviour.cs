@@ -57,7 +57,7 @@ public class FSM_MiceBehaviour : FiniteStateMachine
         State DoesAPoo = new State ("DoesAPoo",
             () => { 
                 blackboard.pooPrefab.SetActive(true);
-                goToTarget.target =
+                
             
             }, // write on enter logic inside {}
             () => { }, // write in state logic inside {}
