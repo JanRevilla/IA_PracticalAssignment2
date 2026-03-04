@@ -22,6 +22,8 @@ public class ROOMBA_Blackboard : MonoBehaviour {
     public float currentCharge = 100;
     public float wanderPointReachDistance = 10f;
 
+    public float initSpeed;
+
     private TextMesh energyLine;
 
     void Start () {

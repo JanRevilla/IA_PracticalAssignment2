@@ -7,13 +7,17 @@ public class FMS_Clean : FiniteStateMachine
 {
     private ROOMBA_Blackboard blackboard;
     private GoToTarget goToTarget;
-    GameObject target;
+    private GameObject target;
     private float elapsedTime;
+    private SteeringContext steeringContext;
 
     public override void OnEnter()
     {
         blackboard = GetComponent<ROOMBA_Blackboard>(); 
         goToTarget = GetComponent<GoToTarget>();
+        steeringContext = GetComponent<SteeringContext>();
+
+        blackboard.initSpeed = steeringContext.maxSpeed;
 
         base.OnEnter(); 
     }
@@ -32,10 +36,12 @@ public class FMS_Clean : FiniteStateMachine
             () => { }, 
             () => {
                 target = SensingUtils.FindInstanceWithinRadius(gameObject, "POO", blackboard.pooDetectionRadius);
-                goToTarget.target = target;                          
+                goToTarget.target = target;
+                steeringContext.maxSpeed = blackboard.initSpeed * 2;
             }, 
             () => {
-                Destroy(target); }
+                Destroy(target); steeringContext.maxSpeed = blackboard.initSpeed;
+            }
         );
 
         State SPINNING = new State("Spinnig",
@@ -46,8 +52,10 @@ public class FMS_Clean : FiniteStateMachine
 
         State CLEANDUST = new State("Clean Dust",
             () => { },
-            () => { goToTarget.target = SensingUtils.FindInstanceWithinRadius(gameObject, "DUST", blackboard.dustDetectionRadius); },
-            () => { Destroy(goToTarget.target); }
+            () => { target = SensingUtils.FindInstanceWithinRadius(gameObject, "DUST", blackboard.dustDetectionRadius);
+                goToTarget.target = target;
+            },
+            () => { Destroy(target); }
         );
 
         Transition goToPoo = new Transition("Go To Poo",
