@@ -18,6 +18,7 @@ public class FMS_Clean : FiniteStateMachine
         steeringContext = GetComponent<SteeringContext>();
 
         blackboard.initSpeed = steeringContext.maxSpeed;
+        blackboard.initAcc = steeringContext.maxAcceleration;
 
         base.OnEnter(); 
     }
@@ -38,9 +39,10 @@ public class FMS_Clean : FiniteStateMachine
                 target = SensingUtils.FindInstanceWithinRadius(gameObject, "POO", blackboard.pooDetectionRadius);
                 goToTarget.target = target;
                 steeringContext.maxSpeed = blackboard.initSpeed * 2;
+                steeringContext.maxAcceleration = blackboard.initAcc * 4;
             }, 
             () => {
-                Destroy(target); steeringContext.maxSpeed = blackboard.initSpeed;
+                Destroy(target); steeringContext.maxSpeed = blackboard.initSpeed;  steeringContext.maxAcceleration = blackboard.initAcc;    
             }
         );
 

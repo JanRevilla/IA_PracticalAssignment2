@@ -23,6 +23,7 @@ public class ROOMBA_Blackboard : MonoBehaviour {
     public float wanderPointReachDistance = 10f;
 
     public float initSpeed;
+    public float initAcc;
 
     private TextMesh energyLine;
 
