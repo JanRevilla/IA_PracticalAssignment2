@@ -20,12 +20,11 @@ public class ROOMBA_Blackboard : MonoBehaviour {
     public float maxCharge = 99;    // max threshold. Leave charging station if currentCharge reaches this level
 
     public float currentCharge = 100;
+    public float wanderPointReachDistance = 10f;
 
     private TextMesh energyLine;
-    
-    
-    
-	void Start () {
+
+    void Start () {
         energyLine = GameObject.Find("EnergyLine").GetComponent<TextMesh>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         originalColor = spriteRenderer.color;
@@ -85,4 +84,5 @@ public class ROOMBA_Blackboard : MonoBehaviour {
     
     private Color chargingColorA = new Color(0.52f, 0.808f, 0.980f, 1);
     private Color chargingColorB = new Color(0.12f, 0.478f, 0.706f, 1);
+
 }

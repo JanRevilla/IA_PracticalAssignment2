@@ -12,7 +12,6 @@ public class FSM_MiceBehaviour : FiniteStateMachine
 
     private MOUSE_Blackboard blackboard;
     private GoToTarget goToTarget;
-    private GameObject roomba;
 
 
     public override void OnEnter()
@@ -23,7 +22,6 @@ public class FSM_MiceBehaviour : FiniteStateMachine
 
         blackboard = GetComponent<MOUSE_Blackboard>();
         goToTarget = GetComponent<GoToTarget>();
-        roomba = GameObject.FindGameObjectWithTag("ROOMBA");
        
         base.OnEnter(); // do not remove
     }
