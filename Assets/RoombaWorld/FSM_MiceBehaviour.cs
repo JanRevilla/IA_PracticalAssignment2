@@ -12,10 +12,7 @@ public class FSM_MiceBehaviour : FiniteStateMachine
 
     private MOUSE_Blackboard blackboard;
     private GoToTarget goToTarget;
-
-
-  
-
+    private GameObject roomba;
 
 
     public override void OnEnter()
@@ -26,6 +23,7 @@ public class FSM_MiceBehaviour : FiniteStateMachine
 
         blackboard = GetComponent<MOUSE_Blackboard>();
         goToTarget = GetComponent<GoToTarget>();
+        roomba = GameObject.FindGameObjectWithTag("ROOMBA");
        
         base.OnEnter(); // do not remove
     }
@@ -77,6 +75,16 @@ public class FSM_MiceBehaviour : FiniteStateMachine
             () => { }  // write on exit logic inisde {}  
         );
 
+        State RunFromRoomba = new State("RunFromRoomba",
+            () => { 
+                goToTarget.target = LocationHelper.NearestExitPoint(gameObject);
+                GetComponent<SpriteRenderer>().color = Color.green;
+
+            }, // write on enter logic inside {}
+            () => { }, // write in state logic inside {}
+            () => { }  // write on exit logic inisde {}  
+        );
+
 
 
 
@@ -105,7 +113,10 @@ public class FSM_MiceBehaviour : FiniteStateMachine
              () => { Destroy(gameObject); }
         );
 
-
+        Transition CloseToRoomba = new Transition("CloseToRoomba",
+             () => { return SensingUtils.FindInstanceWithinRadius(gameObject, "ROOMBA", blackboard.roombaDetectionRadius); },
+             () => { Debug.Log("CLOSETO ROOMBA");  }
+        );
 
         /* STAGE 3: add states and transitions to the FSM 
          * ----------------------------------------------
@@ -115,11 +126,17 @@ public class FSM_MiceBehaviour : FiniteStateMachine
         AddTransition(sourceState, transition, destinationState);
 
          */
-        AddStates(GoToRandomWalkableLocation,DoesAPoo,GoToRandomExitLocation);
+        AddStates(GoToRandomWalkableLocation,DoesAPoo,GoToRandomExitLocation, RunFromRoomba);
 
         AddTransition(GoToRandomWalkableLocation,RandomWalkableLocationNear,DoesAPoo);
         AddTransition(DoesAPoo, PooDone, GoToRandomExitLocation);
         AddTransition(GoToRandomExitLocation, ExitLocationNear, GoToRandomExitLocation);
+        AddTransition(RunFromRoomba, ExitLocationNear, GoToRandomExitLocation);
+
+        AddTransition(GoToRandomExitLocation, CloseToRoomba, RunFromRoomba);
+        AddTransition(DoesAPoo, CloseToRoomba, RunFromRoomba);
+        AddTransition(GoToRandomWalkableLocation, CloseToRoomba, RunFromRoomba);
+
         /* STAGE 4: set the initial state
          
         initialState = ... 
