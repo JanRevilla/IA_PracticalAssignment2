@@ -59,7 +59,6 @@ public class FSM_MiceBehaviour : FiniteStateMachine
 
         State DoesAPoo = new State ("DoesAPoo",
             () => {
-                Debug.Log("Poo");
                 //instance = Instantiate(blackboard.pooPrefab, gameObject.transform); ;
                 GameObject instance = Instantiate(blackboard.pooPrefab);
                 instance.transform.position = gameObject.transform.position;
@@ -115,7 +114,7 @@ public class FSM_MiceBehaviour : FiniteStateMachine
 
         Transition CloseToRoomba = new Transition("CloseToRoomba",
              () => { return SensingUtils.FindInstanceWithinRadius(gameObject, "ROOMBA", blackboard.roombaDetectionRadius); },
-             () => { Debug.Log("CLOSETO ROOMBA");  }
+             () => { }
         );
 
         /* STAGE 3: add states and transitions to the FSM 
