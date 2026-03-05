@@ -40,7 +40,7 @@ public class FSM_RoombaPatrol : FiniteStateMachine
     public override void OnConstruction()
     {
 
-        State GoToTarget = new State("GoToTarget",
+        State GOTOTARGET = new State("GOTOTARGET",
             () => { goToTarget.target = LocationHelper.RandomPatrolPoint(); }, // write on enter logic inside {}
             () => { }, // write in state logic inside {}
             () => { }  // write on exit logic inisde {}  
@@ -54,12 +54,12 @@ public class FSM_RoombaPatrol : FiniteStateMachine
         );
 
 
-        AddState(GoToTarget);
+        AddState(GOTOTARGET);
 
-        AddTransition(GoToTarget, ReachPoint, GoToTarget);
+        AddTransition(GOTOTARGET, ReachPoint, GOTOTARGET);
 
 
-        initialState = GoToTarget; 
+        initialState = GOTOTARGET; 
 
     }
 }

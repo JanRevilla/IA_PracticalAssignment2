@@ -12,6 +12,7 @@ public class FSM_MiceBehaviour : FiniteStateMachine
 
     private MOUSE_Blackboard blackboard;
     private GoToTarget goToTarget;
+    private SteeringContext context;
 
 
     public override void OnEnter()
@@ -22,7 +23,9 @@ public class FSM_MiceBehaviour : FiniteStateMachine
 
         blackboard = GetComponent<MOUSE_Blackboard>();
         goToTarget = GetComponent<GoToTarget>();
-       
+        context = GetComponent<SteeringContext>();  
+
+
         base.OnEnter(); // do not remove
     }
 
@@ -48,14 +51,14 @@ public class FSM_MiceBehaviour : FiniteStateMachine
         );
 
          */
-        State GoToRandomWalkableLocation = new State("GoToRandomWalkableLocation",
+        State GOTORANDOMWALKABLELOCATION = new State("GOTORANDOMWALKABLELOCATION",
             () => { goToTarget.target = LocationHelper.RandomPatrolPoint(); }, // write on enter logic inside {}
             () => { }, // write in state logic inside {}
             () => { }  // write on exit logic inisde {}  
         );
 
 
-        State DoesAPoo = new State ("DoesAPoo",
+        State DOESAPOO = new State ("DOESAPOO",
             () => {
                 //instance = Instantiate(blackboard.pooPrefab, gameObject.transform); ;
                 GameObject instance = Instantiate(blackboard.pooPrefab);
@@ -65,17 +68,19 @@ public class FSM_MiceBehaviour : FiniteStateMachine
             () => { }  // write on exit logic inisde {}  
         );
 
-        State GoToRandomExitLocation = new State("GoToRandomExitLocation",
+        State GOTORANDOMEXITLOCATION = new State("GOTORANDOMEXITLOCATION",
             () => { goToTarget.target = LocationHelper.RandomEntryExitPoint();
             }, // write on enter logic inside {}
             () => { }, // write in state logic inside {}
             () => { }  // write on exit logic inisde {}  
         );
 
-        State RunFromRoomba = new State("RunFromRoomba",
+        State RUNFROMROOMBA = new State("RUNFROMROOMBA",
             () => { 
                 goToTarget.target = LocationHelper.NearestExitPoint(gameObject);
                 GetComponent<SpriteRenderer>().color = Color.green;
+                
+
 
             }, // write on enter logic inside {}
             () => { }, // write in state logic inside {}
@@ -123,16 +128,16 @@ public class FSM_MiceBehaviour : FiniteStateMachine
         AddTransition(sourceState, transition, destinationState);
 
          */
-        AddStates(GoToRandomWalkableLocation,DoesAPoo,GoToRandomExitLocation, RunFromRoomba);
+        AddStates(GOTORANDOMWALKABLELOCATION,DOESAPOO,GOTORANDOMEXITLOCATION, RUNFROMROOMBA);
 
-        AddTransition(GoToRandomWalkableLocation,RandomWalkableLocationNear,DoesAPoo);
-        AddTransition(DoesAPoo, PooDone, GoToRandomExitLocation);
-        AddTransition(GoToRandomExitLocation, ExitLocationNear, GoToRandomExitLocation);
-        AddTransition(RunFromRoomba, ExitLocationNear, GoToRandomExitLocation);
+        AddTransition(GOTORANDOMWALKABLELOCATION,RandomWalkableLocationNear,DOESAPOO);
+        AddTransition(DOESAPOO, PooDone, GOTORANDOMEXITLOCATION);
+        AddTransition(GOTORANDOMEXITLOCATION, ExitLocationNear, GOTORANDOMEXITLOCATION);
+        AddTransition(RUNFROMROOMBA, ExitLocationNear, GOTORANDOMEXITLOCATION);
 
-        AddTransition(GoToRandomExitLocation, CloseToRoomba, RunFromRoomba);
-        AddTransition(DoesAPoo, CloseToRoomba, RunFromRoomba);
-        AddTransition(GoToRandomWalkableLocation, CloseToRoomba, RunFromRoomba);
+        AddTransition(GOTORANDOMEXITLOCATION, CloseToRoomba, RUNFROMROOMBA);
+        AddTransition(DOESAPOO, CloseToRoomba, RUNFROMROOMBA);
+        AddTransition(GOTORANDOMWALKABLELOCATION, CloseToRoomba, RUNFROMROOMBA);
 
         /* STAGE 4: set the initial state
          
@@ -142,7 +147,7 @@ public class FSM_MiceBehaviour : FiniteStateMachine
 
          */
 
-        initialState = GoToRandomWalkableLocation;
+        initialState = GOTORANDOMWALKABLELOCATION;
 
     }
 }
