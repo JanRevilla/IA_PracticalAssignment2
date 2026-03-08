@@ -26,7 +26,7 @@ public class FSM_Charge : FiniteStateMachine
         FiniteStateMachine FSM_Clean = ScriptableObject.CreateInstance<FMS_Clean>();
 
         State GOTOCHARGE = new State("GOTOCHARGE",
-            () => { goToTarget.target = GameObject.FindGameObjectWithTag("ENERGY"); }, 
+            () => { goToTarget.target = GameObject.FindGameObjectWithTag("ENERGY"); blackboard.StopSpinning(); }, 
             () => {  }, 
             () => {  }  
         );
