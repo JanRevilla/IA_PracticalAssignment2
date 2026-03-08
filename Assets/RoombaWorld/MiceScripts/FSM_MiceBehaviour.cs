@@ -12,7 +12,7 @@ public class FSM_MiceBehaviour : FiniteStateMachine
 
     private MOUSE_Blackboard blackboard;
     private GoToTarget goToTarget;
-    private SteeringContext context;
+    private SteeringContext steeringContext;
 
 
     public override void OnEnter()
@@ -23,7 +23,9 @@ public class FSM_MiceBehaviour : FiniteStateMachine
 
         blackboard = GetComponent<MOUSE_Blackboard>();
         goToTarget = GetComponent<GoToTarget>();
-        context = GetComponent<SteeringContext>();  
+        steeringContext = GetComponent<SteeringContext>();
+        blackboard.initSpeed = steeringContext.maxSpeed;
+        blackboard.initAcc = steeringContext.maxAcceleration;
 
 
         base.OnEnter(); // do not remove
@@ -79,12 +81,13 @@ public class FSM_MiceBehaviour : FiniteStateMachine
             () => { 
                 goToTarget.target = LocationHelper.NearestExitPoint(gameObject);
                 GetComponent<SpriteRenderer>().color = Color.green;
-                
-
-
+             
             }, // write on enter logic inside {}
-            () => { }, // write in state logic inside {}
-            () => { }  // write on exit logic inisde {}  
+            () => {
+                steeringContext.maxSpeed = blackboard.initSpeed * 2;
+                steeringContext.maxAcceleration = blackboard.initAcc * 4;
+            }, // write in state logic inside {}
+            () => { steeringContext.maxSpeed = blackboard.initSpeed; steeringContext.maxAcceleration = blackboard.initAcc; }  // write on exit logic inisde {}  
         );
 
 

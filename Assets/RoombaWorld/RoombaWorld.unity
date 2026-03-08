@@ -421,7 +421,7 @@ MonoBehaviour:
   energyRechargePerSecond: 15
   minCharge: 15
   maxCharge: 99
-  currentCharge: 15
+  currentCharge: 100
   wanderPointReachDistance: 10
   initSpeed: 0
   initAcc: 0
@@ -1591,8 +1591,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MiceSpawn
   micePrefab: {fileID: 1752029864694060, guid: d86d9046330caa04c9c3cce05f37154f, type: 3}
-  minRange: 2
-  maxRange: 5
+  minRange: 20
+  maxRange: 30
 --- !u!1 &466963654
 GameObject:
   m_ObjectHideFlags: 0
