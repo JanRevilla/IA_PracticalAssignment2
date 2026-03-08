@@ -840,7 +840,7 @@ GameObject:
   m_Component:
   - component: {fileID: 161583820}
   - component: {fileID: 161583821}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: ppoint (18)
   m_TagString: PATROLPOINT
   m_Icon: {fileID: 0}
@@ -1179,7 +1179,7 @@ GameObject:
   m_Component:
   - component: {fileID: 316578477}
   - component: {fileID: 316578478}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: ppoint (21)
   m_TagString: PATROLPOINT
   m_Icon: {fileID: 0}
@@ -1270,7 +1270,7 @@ GameObject:
   m_Component:
   - component: {fileID: 350854787}
   - component: {fileID: 350854788}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: ppoint (6)
   m_TagString: PATROLPOINT
   m_Icon: {fileID: 0}
@@ -1361,7 +1361,7 @@ GameObject:
   m_Component:
   - component: {fileID: 353183471}
   - component: {fileID: 353183472}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: ppoint (4)
   m_TagString: PATROLPOINT
   m_Icon: {fileID: 0}
@@ -1452,7 +1452,7 @@ GameObject:
   m_Component:
   - component: {fileID: 411100661}
   - component: {fileID: 411100662}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: ppoint (3)
   m_TagString: PATROLPOINT
   m_Icon: {fileID: 0}
@@ -1603,7 +1603,7 @@ GameObject:
   m_Component:
   - component: {fileID: 466963655}
   - component: {fileID: 466963656}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: ppoint
   m_TagString: PATROLPOINT
   m_Icon: {fileID: 0}
@@ -1694,7 +1694,7 @@ GameObject:
   m_Component:
   - component: {fileID: 495533089}
   - component: {fileID: 495533090}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: ppoint (2)
   m_TagString: PATROLPOINT
   m_Icon: {fileID: 0}
@@ -2319,7 +2319,7 @@ GameObject:
   m_Component:
   - component: {fileID: 695817124}
   - component: {fileID: 695817125}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: ppoint (8)
   m_TagString: PATROLPOINT
   m_Icon: {fileID: 0}
@@ -2912,7 +2912,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1107284729}
   - component: {fileID: 1107284730}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: ppoint (13)
   m_TagString: PATROLPOINT
   m_Icon: {fileID: 0}
@@ -3094,7 +3094,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1157449798}
   - component: {fileID: 1157449799}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: ppoint (28)
   m_TagString: PATROLPOINT
   m_Icon: {fileID: 0}
@@ -3185,7 +3185,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1162652830}
   - component: {fileID: 1162652831}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: ppoint (1)
   m_TagString: PATROLPOINT
   m_Icon: {fileID: 0}
@@ -3367,7 +3367,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1217944797}
   - component: {fileID: 1217944798}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: ppoint (15)
   m_TagString: PATROLPOINT
   m_Icon: {fileID: 0}
@@ -3828,7 +3828,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1232656938}
   - component: {fileID: 1232656939}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: ppoint (20)
   m_TagString: PATROLPOINT
   m_Icon: {fileID: 0}
@@ -4147,7 +4147,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1294641359}
   - component: {fileID: 1294641360}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: ppoint (14)
   m_TagString: PATROLPOINT
   m_Icon: {fileID: 0}
@@ -4238,7 +4238,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1312991218}
   - component: {fileID: 1312991219}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: ppoint (24)
   m_TagString: PATROLPOINT
   m_Icon: {fileID: 0}
@@ -4578,7 +4578,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 53
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -4832,7 +4832,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1540205164}
   - component: {fileID: 1540205165}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: ppoint (27)
   m_TagString: PATROLPOINT
   m_Icon: {fileID: 0}
@@ -4923,7 +4923,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1582795475}
   - component: {fileID: 1582795476}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: ppoint (9)
   m_TagString: PATROLPOINT
   m_Icon: {fileID: 0}
@@ -5046,7 +5046,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1616082143}
   - component: {fileID: 1616082144}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: ppoint (25)
   m_TagString: PATROLPOINT
   m_Icon: {fileID: 0}
@@ -5137,7 +5137,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1625969900}
   - component: {fileID: 1625969901}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: ppoint (16)
   m_TagString: PATROLPOINT
   m_Icon: {fileID: 0}
@@ -5228,7 +5228,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1635843081}
   - component: {fileID: 1635843082}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: ppoint (10)
   m_TagString: PATROLPOINT
   m_Icon: {fileID: 0}
@@ -5319,7 +5319,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1733929538}
   - component: {fileID: 1733929539}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: ppoint (30)
   m_TagString: PATROLPOINT
   m_Icon: {fileID: 0}
@@ -5410,7 +5410,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1739193973}
   - component: {fileID: 1739193974}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: ppoint (19)
   m_TagString: PATROLPOINT
   m_Icon: {fileID: 0}
@@ -5684,7 +5684,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1775298253}
   - component: {fileID: 1775298254}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: ppoint (22)
   m_TagString: PATROLPOINT
   m_Icon: {fileID: 0}
@@ -5775,7 +5775,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1875669674}
   - component: {fileID: 1875669675}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: ppoint (17)
   m_TagString: PATROLPOINT
   m_Icon: {fileID: 0}
@@ -5866,7 +5866,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1892432975}
   - component: {fileID: 1892432976}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: ppoint (29)
   m_TagString: PATROLPOINT
   m_Icon: {fileID: 0}
@@ -5957,7 +5957,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1902909682}
   - component: {fileID: 1902909683}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: ppoint (26)
   m_TagString: PATROLPOINT
   m_Icon: {fileID: 0}
@@ -6139,7 +6139,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1928289388}
   - component: {fileID: 1928289389}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: ppoint (7)
   m_TagString: PATROLPOINT
   m_Icon: {fileID: 0}
@@ -6230,7 +6230,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1937808161}
   - component: {fileID: 1937808162}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: ppoint (12)
   m_TagString: PATROLPOINT
   m_Icon: {fileID: 0}
@@ -6412,7 +6412,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1988794328}
   - component: {fileID: 1988794329}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: ppoint (5)
   m_TagString: PATROLPOINT
   m_Icon: {fileID: 0}
@@ -6503,7 +6503,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2020266657}
   - component: {fileID: 2020266658}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: ppoint (23)
   m_TagString: PATROLPOINT
   m_Icon: {fileID: 0}
@@ -6685,7 +6685,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2037667633}
   - component: {fileID: 2037667634}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: ppoint (11)
   m_TagString: PATROLPOINT
   m_Icon: {fileID: 0}
